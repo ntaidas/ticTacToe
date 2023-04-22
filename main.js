@@ -16,12 +16,13 @@ const playerTwo = playerFactory("Player Two", "O");
     square.textContent = gameBoard[i];
     grid.appendChild(square);
     function gameOver() {
-      const body = document.querySelector("body");
+      const alertBox = document.getElementById('alertBox');
       const alert = document.createElement("h3");
+      alertBox.textContent = '';
       alert.textContent = "Press Start to play!";
-      body.appendChild(alert);
+      alertBox.appendChild(alert);
     }
-    square.addEventListener("click", gameOver);
+    square.addEventListener("click", gameOver, { once: true });
   }
   return grid;
 })();
@@ -37,12 +38,17 @@ function startGame() {
     square.classList.add(`${i + 1}`);
     square.textContent = gameBoard[i];
     grid.appendChild(square);
+    function toogleTurn(){
+      return computerPlay != computerPlay;
+    }
     square.addEventListener("click", () => {
-      if(computerPlay == true){
-         square.textContent = playerTwo.mark;
-       }
-      else { square.textContent = playerOne.mark;}
-      computerPlay != computerPlay;
+      if (computerPlay === true) {
+        toogleTurn()
+        
+      } else {
+        square.textContent = playerOne.mark;
+        toogleTurn()
+      }
     });
   }
 }
