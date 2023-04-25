@@ -1,11 +1,13 @@
 body{
   padding: 0px;
   margin: 0px;
+  display: grid;
+  grid-template-columns: repeat(1fr, 2fr, 1fr);
 }
 
 #gameScreen {
   display: grid;
-  grid-template-rows: 3fr 8fr 3fr;
+  grid-template-rows: 3fr 8fr 3fr 3fr;
   justify-content: center;
   height: 99vh;
   align-items: center;
@@ -30,7 +32,15 @@ body{
 button{
   height: 3rem;
   border-radius: 1rem;
-  grid: 1/2;
+  grid-row-start: 1;
+}
+
+#alertBox{
+  text-align: center;
+}
+
+.scoreBox{
+  text-align: center;
 }
 
 /* #grid::before{

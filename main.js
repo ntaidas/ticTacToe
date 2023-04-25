@@ -28,6 +28,8 @@ const playerTwo = playerFactory("Player Two", "O");
   startButton.textContent = `Let's go`;
   gameScreen.appendChild(startButton);
   startButton.addEventListener("click", startGame);
+
+  /// creates game board
   for (let i = 0; i <= gameBoard.length - 1; i++) {
     let square = document.createElement("div");
     square.classList.add(`square`);
@@ -72,7 +74,12 @@ function startGame() {
           gameBoard[positionB] !== "" ||
           gameBoard[positionC] !== "")
       ) {
-        return alert("it works!!!");
+        const gameScreen = document.querySelector("#gameScreen");
+        const scoreBox = document.createElement('div');
+        scoreBox.classList.add(`scoreBox`)
+        gameScreen.appendChild(scoreBox)
+        scoreBox.textContent = `${gameBoard[positionA]} wins!` 
+
       }
     });
   }
